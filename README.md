@@ -1,6 +1,6 @@
-# API 명세서
+## API 명세서
 
-## 일정(schedule)
+### 일정(schedule)
 
 |Method|URI|기능|
 |--|--|--|
@@ -10,19 +10,19 @@
 |PATCH|`/api/v1/schedules/{scheduleId}`|선택 일정 수정|
 |DELETE|`/api/v1/schedules/{scheduleId}`|선택 일정 삭제|
 
-### 일정 생성
+#### 일정 생성
 
 |메서드|요청 URL|
 |--|--|
 |POST|`/api/v1/schedules`
 
-**Request Headers**
+Request Headers
 
 |Key|Value|필수|설명|
 |--|--|--|--|
 |`Content-Type`|`application/json`|✅|요청 본문 형식|
 
-**Request Body**
+Request Body
 
 |필드|타입|필수|설명|
 |--|--|--|--|
@@ -39,7 +39,7 @@
     "password": "1234"
 }
 ```
-**Response Body** `201 Created`
+Response Body `201 Created`
 
 |필드|타입|설명|
 |--|--|--|
@@ -61,19 +61,19 @@
 }
 ```
 
-### 전체 일정 조회
+#### 전체 일정 조회
 
 |메서드|요청 URL|
 |--|--|
 |GET|`/api/v1/schedules`
 
-**Query Parameter**
+Query Parameter
 
 |필드|타입|필수|설명|
 |--|--|--|--|
 |`author`|String|❌| 작성자명
 
-**Response Body** `200 OK`
+Response Body `200 OK`
 
 |필드|타입|설명|
 |--|--|--|
@@ -123,13 +123,13 @@
 }
 ```
 
-### 선택 일정 조회
+#### 선택 일정 조회
 
 |메서드|요청 URL|
 |--|--|
 |GET|`/api/v1/schedules/{scheduleId}`
 
-**Response Body** `200 OK`
+Response Body `200 OK`
 
 |필드|타입|설명|
 |--|--|--|
@@ -151,19 +151,19 @@
 }
 ```
 
-### 일정 수정
+#### 일정 수정
 
 |메서드|요청 URL|
 |--|--|
 |PATCH|`/api/v1/schedules/{scheduleId}`
 
-**Request Headers**
+Request Headers
 
 |Key|Value|필수|설명|
 |--|--|--|--|
 |`Content-Type`|`application/json`|✅|요청 본문 형식|
 
-**Request Body**
+Request Body
 
 |필드|타입|필수|설명|
 |--|--|--|--|
@@ -178,7 +178,7 @@
     "password": "1234"
 }
 ```
-**Response Body** `200 OK`
+Response Body `200 OK`
 
 |필드|타입|설명|
 |--|--|--|
@@ -200,19 +200,19 @@
 }
 ```
 
-### 일정 삭제
+#### 일정 삭제
 
 |메서드|요청 URL|
 |--|--|
 |DELETE|`/api/v1/schedules/{scheduleId}`
 
-**Request Headers**
+Request Headers
 
 |Key|Value|필수|설명|
 |--|--|--|--|
 |`Content-Type`|`application/json`|✅|요청 본문 형식|
 
-**Request Body**
+Request Body
 
 |필드|타입|필수|설명|
 |--|--|--|--|
@@ -224,9 +224,9 @@
 }
 ```
 
-**Response** `204 No Content`
+Response `204 No Content`
 
-# ERD
+## ERD
 ```mermaid
 erDiagram
     schedules {
@@ -240,16 +240,16 @@ erDiagram
     }
 ```
 
-# 테이블 명세서
+## 테이블 명세서
 
-## 공통 컬럼: `BaseEntity`
+### 공통 컬럼: `BaseEntity`
 
 |칼럼 이름| 데이터타입|null 허용| key종류| 기본값| 설명|
 |--|--|--|--|--|--|
 |`created_at`|TIMESTAMP|❌|-|-|작성일 (최초 저장 시 자동 입력, 수정 불가)|
 |`modified_at`|TIMESTAMP|❌|-|-|수정일 (저장·수정 시 자동 갱신)|
 
-## 테이블명: `Schedule`
+### 테이블명: `Schedule`
 |칼럼 이름| 데이터타입|null 허용| key종류| 기본값| 설명|
 |--|--|--|--|--|--|
 |`schedule_id`|BIGINT|❌|PK|AUTO_INCREMENT|일정 ID|
