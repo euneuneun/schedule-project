@@ -136,7 +136,7 @@ https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-ap
 
 |메서드|요청 URL|
 |--|--|
-|GET|`api/v1/schedules/{author}`
+|GET|`api/v1/schedules/{scheduleId}`
 
 **Response Body** `200 OK`
 
@@ -151,40 +151,12 @@ https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-ap
 
 ```json
 {
-  "scheduleList": [
-    {
-      "scheduledId": 1,
-      "title": "제목",
-      "content": "내용",
-      "author": "작성자",
-      "createdAt": "2026-11-14T17:09:00",
-      "modifiedAt": "2026-11-14T17:09:00"
-    },
-    {
       "scheduledId": 2,
       "title": "제목",
       "content": "내용",
       "author": "작성자",
       "createdAt": "2026-09-14T17:09:00",
       "modifiedAt": "2026-09-14T17:09:00"
-    },
-    {
-      "scheduledId": 3,
-      "title": "제목",
-      "content": "내용",
-      "author": "작성자",
-      "createdAt": "2026-10-08T17:09:00",
-      "modifiedAt": "2026-10-08T17:09:00"
-    },
-    {
-      "scheduledId": 4,
-      "title": "제목",
-      "content": "내용",
-      "author": "작성자",
-      "createdAt": "2026-10-07T17:09:00",
-      "modifiedAt": "2026-10-07T17:09:00"
-    }
-  ]
 }
 
 ```
