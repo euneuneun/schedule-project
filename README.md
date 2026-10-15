@@ -10,19 +10,20 @@
 |PATCH|`/api/v1/schedules/{scheduleId}`|선택 일정 수정|
 |DELETE|`/api/v1/schedules/{scheduleId}`|선택 일정 삭제|
 
-#### 일정 생성
+<details>
+<summary><h3>일정 생성</h3></summary>
 
 |메서드|요청 URL|
 |--|--|
 |POST|`/api/v1/schedules`
 
-Request Headers
+**Request Headers**
 
 |Key|Value|필수|설명|
 |--|--|--|--|
 |`Content-Type`|`application/json`|✅|요청 본문 형식|
 
-Request Body
+**Request Body**
 
 |필드|타입|필수|설명|
 |--|--|--|--|
@@ -39,7 +40,7 @@ Request Body
     "password": "1234"
 }
 ```
-Response Body `201 Created`
+**Response Body** `201 Created`
 
 |필드|타입|설명|
 |--|--|--|
@@ -61,19 +62,22 @@ Response Body `201 Created`
 }
 ```
 
-#### 전체 일정 조회
+</details>
+
+<details>
+<summary><h3>전체 일정 조회</h3></summary>
 
 |메서드|요청 URL|
 |--|--|
 |GET|`/api/v1/schedules`
 
-Query Parameter
+**Query Parameter**
 
 |필드|타입|필수|설명|
 |--|--|--|--|
 |`author`|String|❌| 작성자명
 
-Response Body `200 OK`
+**Response Body** `200 OK`
 
 |필드|타입|설명|
 |--|--|--|
@@ -123,13 +127,16 @@ Response Body `200 OK`
 }
 ```
 
-#### 선택 일정 조회
+</details>
+
+<details>
+<summary><h3>선택 일정 조회</h3></summary>
 
 |메서드|요청 URL|
 |--|--|
 |GET|`/api/v1/schedules/{scheduleId}`
 
-Response Body `200 OK`
+**Response Body** `200 OK`
 
 |필드|타입|설명|
 |--|--|--|
@@ -151,19 +158,22 @@ Response Body `200 OK`
 }
 ```
 
-#### 일정 수정
+</details>
+
+<details>
+<summary><h3>일정 수정</h3></summary>
 
 |메서드|요청 URL|
 |--|--|
 |PATCH|`/api/v1/schedules/{scheduleId}`
 
-Request Headers
+**Request Headers**
 
 |Key|Value|필수|설명|
 |--|--|--|--|
 |`Content-Type`|`application/json`|✅|요청 본문 형식|
 
-Request Body
+**Request Body**
 
 |필드|타입|필수|설명|
 |--|--|--|--|
@@ -178,7 +188,7 @@ Request Body
     "password": "1234"
 }
 ```
-Response Body `200 OK`
+**Response Body** `200 OK`
 
 |필드|타입|설명|
 |--|--|--|
@@ -200,19 +210,22 @@ Response Body `200 OK`
 }
 ```
 
-#### 일정 삭제
+</details>
+
+<details>
+<summary><h3>일정 삭제</h3></summary>
 
 |메서드|요청 URL|
 |--|--|
 |DELETE|`/api/v1/schedules/{scheduleId}`
 
-Request Headers
+**Request Headers**
 
 |Key|Value|필수|설명|
 |--|--|--|--|
 |`Content-Type`|`application/json`|✅|요청 본문 형식|
 
-Request Body
+**Request Body**
 
 |필드|타입|필수|설명|
 |--|--|--|--|
@@ -224,10 +237,13 @@ Request Body
 }
 ```
 
-Response `204 No Content`
+**Response** `204 No Content`
+
+</details>
 
 ## ERD
 ```mermaid
+%%{init: {"er": {"useMaxWidth": false}}}%%
 erDiagram
     schedules {
         BIGINT schedule_id PK
