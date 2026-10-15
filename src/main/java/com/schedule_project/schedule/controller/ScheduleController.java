@@ -5,6 +5,7 @@ import com.schedule_project.schedule.dto.ScheduleResponse;
 import com.schedule_project.schedule.service.ScheduleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,5 +43,17 @@ public class ScheduleController {
     public ScheduleResponse scheduleGetOne(@PathVariable Long scheduleId){
         ScheduleResponse response = scheduleService.scheduleGetOne(scheduleId);
         return response;
+    }
+
+
+    /**
+     * 전체 일정 조회 API
+     * @param author 작성자명 (선택, 입력 시 해당 작성자의 일정만 조회)
+     * @return 일정 목록
+     */
+    @GetMapping
+    public ResponseEntity<List<ScheduleResponse>> getSchedules(@RequestParam(required = false) String author){
+        List<ScheduleResponse> response = scheduleService.getSchedules(author);
+        return ResponseEntity.ok(response);
     }
 }
