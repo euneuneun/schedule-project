@@ -19,10 +19,23 @@ repositories {
 }
 
 dependencies {
+    // Lombok: @Getter, @NoArgsConstructor 등으로 반복 코드 자동 생성
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // JPA: 엔티티와 DB 테이블 매핑, Repository로 CRUD
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Validation: @NotBlank, @Size 등으로 요청 값 검증
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // Web MVC: @RestController로 REST API 서버 구성
     implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+
+    // MySQL: DB 연결 드라이버 (실행할 때만 필요)
     runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // 테스트: 각 기능별 테스트 지원
     testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-validation-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
