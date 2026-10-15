@@ -68,7 +68,7 @@ public class ScheduleController {
      * @return 일정 목록
      */
     @PatchMapping ("/{scheduleId}")
-    public ResponseEntity<ScheduleResponse> updateScedule(@PathVariable Long scheduleId, @Valid @RequestBody ScheduleUpdateRequest request){
+    public ResponseEntity<ScheduleResponse> updateSchedule(@PathVariable Long scheduleId, @Valid @RequestBody ScheduleUpdateRequest request){
         ScheduleResponse response = scheduleService.updateSchedule(scheduleId, request);
         return ResponseEntity.ok(response);
     }

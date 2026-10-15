@@ -45,8 +45,4 @@ public class Schedule extends BaseEntity{
         this.author = author;
     }
 
-
-
-
-
 }

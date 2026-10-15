@@ -50,10 +50,12 @@ public class ScheduleService {
     @Transactional(readOnly = true)
     public List<ScheduleResponse> getSchedules(String author){
 
-        List<Schedule> schedules = scheduleRepository.findAllByAuthor(author);
+        List<Schedule> schedules;
 
         if(author == null){
             schedules = scheduleRepository.findAll();
+        } else{
+            schedules = scheduleRepository.findAllByAuthor(author);
         }
 
         List<ScheduleResponse> response = new ArrayList<>();
@@ -75,7 +77,7 @@ public class ScheduleService {
     public ScheduleResponse updateSchedule(Long scheduleId, ScheduleUpdateRequest request){
         Schedule schedule = scheduleRepository.findById(scheduleId)
                 .orElseThrow( () -> new IllegalStateException("일정이 존재하지 않습니다."));
-        if ( schedule.getPassword().equals(request.getPassword())){
+        if (!schedule.getPassword().equals(request.getPassword())) {
             throw new IllegalStateException("비밀번호가 일치하지 않습니다.");
         }
         schedule.update(request.getTitle(), request.getAuthor());
@@ -96,7 +98,7 @@ public class ScheduleService {
 
         Schedule schedule = scheduleRepository.findById(scheduleId)
                 .orElseThrow(()->new IllegalStateException("일정이 존재하지 않습니다"));
-        if ( schedule.getPassword().equals(password) ){
+        if (!schedule.getPassword().equals(password)) {
             throw new IllegalStateException("비밀번호가 일치하지 않습니다.");
         }
 
