@@ -11,17 +11,17 @@ https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-ap
 
 |Method|URI|기능|
 |--|--|--|
-|POST|`api/v1/schedules`|일정 생성|
-|GET|`api/v1/schedules`|전체 일정 조회|
-|GET|`api/v1/schedules`|선택 일정 조회|
-|PATCH|`api/v1/schedules/{scheduleId}`|선택 일정 수정|
-|DELETE|`api/v1/schedules/{scheduleId}`|선택 일정 삭제|
+|POST|`/api/v1/schedules`|일정 생성|
+|GET|`/api/v1/schedules`|전체 일정 조회|
+|GET|`/api/v1/schedules/{scheduleId}`|선택 일정 조회|
+|PATCH|`/api/v1/schedules/{scheduleId}`|선택 일정 수정|
+|DELETE|`/api/v1/schedules/{scheduleId}`|선택 일정 삭제|
 
 ### 일정 생성
 
 |메서드|요청 URL|
 |--|--|
-|POST|`api/v1/schedules`
+|POST|`/api/v1/schedules`
 
 **Request Headers**
 
@@ -59,12 +59,12 @@ https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-ap
 
 ```json
 {
-    "scheduledId": 1,
+    "scheduleId": 1,
     "title": "일정 제목",
     "content": "일정 내용",
     "author": "작성자명",
-    "createdAt": "작성일",
-    "modifiedAt": "수정일"
+    "createdAt": "2026-10-16T14:30:00",
+    "modifiedAt": "2026-10-16T14:30:00"
 }
 ```
 
@@ -72,7 +72,7 @@ https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-ap
 
 |메서드|요청 URL|
 |--|--|
-|GET|`api/v1/schedules`
+|GET|`/api/v1/schedules`
 
 **Query Parameter**
 
@@ -92,51 +92,47 @@ https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-ap
 |`modifiedAt`|LocalDateTime|Y|수정일
 
 ```json
-{
-    "scheduleList": [
-      {
-        "scheduledId": 1,
+[
+    {
+        "scheduleId": 1,
         "title": "제목",
         "content": "내용",
         "author": "작성자",
         "createdAt": "2026-11-14T17:09:00",
         "modifiedAt": "2026-11-14T17:09:00"
-      },
-      {
-        "scheduledId": 2,
+    },
+    {
+        "scheduleId": 2,
         "title": "제목",
         "content": "내용",
         "author": "작성자",
         "createdAt": "2026-09-14T17:09:00",
         "modifiedAt": "2026-09-14T17:09:00"
-      },
-      {
-        "scheduledId": 3,
+    },
+    {
+        "scheduleId": 3,
         "title": "제목",
         "content": "내용",
         "author": "작성자",
         "createdAt": "2026-10-08T17:09:00",
         "modifiedAt": "2026-10-08T17:09:00"
-      },
-      {
-        "scheduledId": 4,
+    },
+    {
+        "scheduleId": 4,
         "title": "제목",
         "content": "내용",
         "author": "작성자",
         "createdAt": "2026-10-07T17:09:00",
         "modifiedAt": "2026-10-07T17:09:00"
-      }
-    ]
-}
-
+    }
+]
 ```
 
 ### 선택 일정 조회
 
-
 |메서드|요청 URL|
 |--|--|
-|GET|`api/v1/schedules/{scheduleId}`
+|GET|`/api/v1/schedules/{scheduleId}`
 
 **Response Body** `200 OK`
 
@@ -151,21 +147,20 @@ https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-ap
 
 ```json
 {
-      "scheduledId": 2,
-      "title": "제목",
-      "content": "내용",
-      "author": "작성자",
-      "createdAt": "2026-09-14T17:09:00",
-      "modifiedAt": "2026-09-14T17:09:00"
+    "scheduleId": 2,
+    "title": "제목",
+    "content": "내용",
+    "author": "작성자",
+    "createdAt": "2026-09-14T17:09:00",
+    "modifiedAt": "2026-09-14T17:09:00"
 }
-
 ```
 
 ### 일정 수정
 
 |메서드|요청 URL|
 |--|--|
-|PATCH|`api/v1/schedules/{scheduleId}`
+|PATCH|`/api/v1/schedules/{scheduleId}`
 
 **Request Headers**
 
@@ -201,19 +196,19 @@ https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-ap
 
 ```json
 {
-    "scheduledId": 1,
+    "scheduleId": 1,
     "title": "일정 제목",
     "content": "일정 내용",
     "author": "작성자명",
-    "createdAt": "작성일",
-    "modifiedAt": "수정일"
+    "createdAt": "2026-10-15T09:00:00",
+    "modifiedAt": "2026-10-16T14:30:00"
 }
 ```
 ### 일정 삭제
 
 |메서드|요청 URL|
 |--|--|
-|DELETE|`api/v1/schedules/{scheduleId}`
+|DELETE|`/api/v1/schedules/{scheduleId}`
 
 **Request Headers**
 
@@ -232,3 +227,5 @@ https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-ap
     "password": "1234"
 }
 ```
+
+**Response** `204 No Content`
