@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/schedules")
@@ -20,15 +22,25 @@ public class ScheduleController {
 
     private final ScheduleService scheduleService;
 
+    /**
+     * 일정 생성 API
+     * @param request 일정 생성 요청 DTO (제목, 내용, 작성자명, 비밀번호)
+     * @return 생성된 일정 정보
+     */
     @PostMapping
     public ScheduleResponse scheduleCreate(@Valid @RequestBody ScheduleCreateRequest request){
         ScheduleResponse respone = scheduleService.scheduleCreate(request);
         return respone;
     }
 
-    @GetMapping("/{id}")
-    public ScheduleResponse scheduleGetOne(@PathVariable Long author){
-        ScheduleResponse response = scheduleService.scheduleGetOne(author);
+    /**
+     * 선택 일정 조회 API
+     * @param scheduleId 조회할 일정 ID
+     * @return 조회된 일정 정보
+     */
+    @GetMapping("/{scheduleId}")
+    public ScheduleResponse scheduleGetOne(@PathVariable Long scheduleId){
+        ScheduleResponse response = scheduleService.scheduleGetOne(scheduleId);
         return response;
     }
 }
