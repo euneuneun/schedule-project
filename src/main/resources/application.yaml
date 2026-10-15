@@ -1,3 +1,9 @@
 spring:
   application:
     name: schedule_project
+  profiles:
+    active: local
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
