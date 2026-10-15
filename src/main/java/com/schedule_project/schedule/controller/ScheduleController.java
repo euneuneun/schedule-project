@@ -1,12 +1,14 @@
 package com.schedule_project.schedule.controller;
 
 import com.schedule_project.schedule.dto.request.ScheduleCreateRequest;
+import com.schedule_project.schedule.dto.request.ScheduleDeleteRequest;
 import com.schedule_project.schedule.dto.request.ScheduleUpdateRequest;
 import com.schedule_project.schedule.dto.response.ScheduleResponse;
 import com.schedule_project.schedule.service.ScheduleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -69,5 +71,17 @@ public class ScheduleController {
     public ResponseEntity<ScheduleResponse> updateScedule(@PathVariable Long scheduleId, @Valid @RequestBody ScheduleUpdateRequest request){
         ScheduleResponse response = scheduleService.updateSchedule(scheduleId, request);
         return ResponseEntity.ok(response);
+    }
+
+    /**
+     * 일정 삭제 API
+     * @param scheduleId 삭제할 일정 ID
+     * @param request 일정 삭제 요청 DTO (비밀번호)
+     * @return 응답 본문 없음 (204 No Content)
+     */
+    @DeleteMapping("/{scheduleId}")
+    public ResponseEntity<Void> deleteSchedule(@PathVariable Long scheduleId, @RequestBody ScheduleDeleteRequest request){
+        scheduleService.deleteSchedule(scheduleId, request.getPassword());
+        return ResponseEntity.noContent().build();
     }
 }

@@ -75,7 +75,7 @@ public class ScheduleService {
     public ScheduleResponse updateSchedule(Long scheduleId, ScheduleUpdateRequest request){
         Schedule schedule = scheduleRepository.findById(scheduleId)
                 .orElseThrow( () -> new IllegalStateException("일정이 존재하지 않습니다."));
-        if ( schedule.getPassword() != request.getPassword()){
+        if ( schedule.getPassword().equals(request.getPassword())){
             throw new IllegalStateException("비밀번호가 일치하지 않습니다.");
         }
         schedule.update(request.getTitle(), request.getAuthor());
@@ -89,5 +89,17 @@ public class ScheduleService {
                 schedule.getModifiedAt());
 
         return response;
+    }
+
+    @Transactional
+    public void deleteSchedule(Long scheduleId, String password){
+
+        Schedule schedule = scheduleRepository.findById(scheduleId)
+                .orElseThrow(()->new IllegalStateException("일정이 존재하지 않습니다"));
+        if ( schedule.getPassword().equals(password) ){
+            throw new IllegalStateException("비밀번호가 일치하지 않습니다.");
+        }
+
+        scheduleRepository.delete(schedule);
     }
 }
