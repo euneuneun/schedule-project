@@ -1,12 +1,14 @@
 package com.schedule_project.schedule.controller;
 
-import com.schedule_project.schedule.dto.ScheduleCreateRequest;
-import com.schedule_project.schedule.dto.ScheduleResponse;
+import com.schedule_project.schedule.dto.request.ScheduleCreateRequest;
+import com.schedule_project.schedule.dto.request.ScheduleUpdateRequest;
+import com.schedule_project.schedule.dto.response.ScheduleResponse;
 import com.schedule_project.schedule.service.ScheduleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -54,6 +56,18 @@ public class ScheduleController {
     @GetMapping
     public ResponseEntity<List<ScheduleResponse>> getSchedules(@RequestParam(required = false) String author){
         List<ScheduleResponse> response = scheduleService.getSchedules(author);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * 일정 수정 API
+     * @param scheduleId 수정할 일정 ID
+     * @param request 일정 수정 요청 DTO (제목, 작성자명, 비밀번호)
+     * @return 일정 목록
+     */
+    @PatchMapping ("/{scheduleId}")
+    public ResponseEntity<ScheduleResponse> updateScedule(@PathVariable Long scheduleId, @Valid @RequestBody ScheduleUpdateRequest request){
+        ScheduleResponse response = scheduleService.updateSchedule(scheduleId, request);
         return ResponseEntity.ok(response);
     }
 }

@@ -1,7 +1,8 @@
 package com.schedule_project.schedule.service;
 
-import com.schedule_project.schedule.dto.ScheduleCreateRequest;
-import com.schedule_project.schedule.dto.ScheduleResponse;
+import com.schedule_project.schedule.dto.request.ScheduleCreateRequest;
+import com.schedule_project.schedule.dto.request.ScheduleUpdateRequest;
+import com.schedule_project.schedule.dto.response.ScheduleResponse;
 import com.schedule_project.schedule.entity.Schedule;
 import com.schedule_project.schedule.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
@@ -66,6 +67,26 @@ public class ScheduleService {
                     schedule.getCreatedAt(),
                     schedule.getModifiedAt()));
         }
+
+        return response;
+    }
+
+    @Transactional
+    public ScheduleResponse updateSchedule(Long scheduleId, ScheduleUpdateRequest request){
+        Schedule schedule = scheduleRepository.findById(scheduleId)
+                .orElseThrow( () -> new IllegalStateException("일정이 존재하지 않습니다."));
+        if ( schedule.getPassword() != request.getPassword()){
+            throw new IllegalStateException("비밀번호가 일치하지 않습니다.");
+        }
+        schedule.update(request.getTitle(), request.getAuthor());
+
+        ScheduleResponse response = new ScheduleResponse(
+                schedule.getScheduleId(),
+                schedule.getTitle(),
+                schedule.getContent(),
+                schedule.getAuthor(),
+                schedule.getCreatedAt(),
+                schedule.getModifiedAt());
 
         return response;
     }

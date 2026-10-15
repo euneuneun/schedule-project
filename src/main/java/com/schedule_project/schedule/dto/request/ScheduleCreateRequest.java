@@ -1,4 +1,4 @@
-package com.schedule_project.schedule.dto;
+package com.schedule_project.schedule.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
