@@ -41,8 +41,12 @@ public class Schedule extends BaseEntity{
     }
 
     public void update(String title, String author){
-        this.title = title;
-        this.author = author;
+        if (title != null) {
+            this.title = title;
+        }
+        if (author != null) {
+            this.author = author;
+        }
     }
 
 }
