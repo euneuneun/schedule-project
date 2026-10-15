@@ -28,4 +28,18 @@ public class ScheduleService {
         );
         return response;
     }
+
+    @Transactional(readOnly = true)
+    public ScheduleResponse scheduleGetOne(Long id){
+        Schedule schedule = scheduleRepository.findById(id)
+                .orElseThrow(()-> new IllegalStateException("존재하지 않는 일정입니다."));
+        ScheduleResponse response = new ScheduleResponse(
+                schedule.getScheduleId(),
+                schedule.getTitle(),
+                schedule.getContent(),
+                schedule.getAuthor(),
+                schedule.getCreatedAt(),
+                schedule.getModifiedAt());
+        return response;
+    }
 }
