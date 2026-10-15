@@ -1,10 +1,3 @@
-
-## ERD
-![img.png](img.png)
-
-## API 명세서
-https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-app
-
 # API 명세서
 
 ## 일정(schedule)
@@ -27,16 +20,16 @@ https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-ap
 
 |Key|Value|필수|설명|
 |--|--|--|--|
-|`Content-Type`|`application/json`|Y|요청 본문 형식|
+|`Content-Type`|`application/json`|✅|요청 본문 형식|
 
 **Request Body**
 
 |필드|타입|필수|설명|
 |--|--|--|--|
-|`title`|String|Y| 일정 제목 
-|`content`|String|Y| 일정 내용
-|`author`|String|Y| 작성자명
-|`password`|String|Y| 비밀번호
+|`title`|String|✅| 일정 제목 
+|`content`|String|✅| 일정 내용
+|`author`|String|✅| 작성자명
+|`password`|String|✅| 비밀번호
 
 ```json
 {
@@ -48,14 +41,14 @@ https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-ap
 ```
 **Response Body** `201 Created`
 
-|필드|타입|필수|유효성|
-|--|--|--|--|
-|`scheduleId`|Long|Y|일정 ID|
-|`title`|String|Y|일정 제목|
-|`content`|String|Y|일정 내용|
-|`author`|String|Y|작성자명|
-|`createdAt`|LocalDateTime|Y|작성일
-|`modifiedAt`|LocalDateTime|Y|수정일
+|필드|타입|설명|
+|--|--|--|
+|`scheduleId`|Long|일정 ID|
+|`title`|String|일정 제목|
+|`content`|String|일정 내용|
+|`author`|String|작성자명|
+|`createdAt`|LocalDateTime|작성일
+|`modifiedAt`|LocalDateTime|수정일
 
 ```json
 {
@@ -78,54 +71,56 @@ https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-ap
 
 |필드|타입|필수|설명|
 |--|--|--|--|
-|`author`|String|N| 작성자명
+|`author`|String|❌| 작성자명
 
 **Response Body** `200 OK`
 
-|필드|타입|필수|유효성|
-|--|--|--|--|
-|`scheduleId`|Long|Y|일정 ID|
-|`title`|String|Y|일정 제목|
-|`content`|String|Y|일정 내용|
-|`author`|String|Y|작성자명|
-|`createdAt`|LocalDateTime|Y|작성일
-|`modifiedAt`|LocalDateTime|Y|수정일
+|필드|타입|설명|
+|--|--|--|
+|`scheduleId`|Long|일정 ID|
+|`title`|String|일정 제목|
+|`content`|String|일정 내용|
+|`author`|String|작성자명|
+|`createdAt`|LocalDateTime|작성일
+|`modifiedAt`|LocalDateTime|수정일
 
 ```json
-[
-    {
-        "scheduleId": 1,
-        "title": "제목",
-        "content": "내용",
-        "author": "작성자",
-        "createdAt": "2026-11-14T17:09:00",
-        "modifiedAt": "2026-11-14T17:09:00"
-    },
-    {
-        "scheduleId": 2,
-        "title": "제목",
-        "content": "내용",
-        "author": "작성자",
-        "createdAt": "2026-09-14T17:09:00",
-        "modifiedAt": "2026-09-14T17:09:00"
-    },
-    {
-        "scheduleId": 3,
-        "title": "제목",
-        "content": "내용",
-        "author": "작성자",
-        "createdAt": "2026-10-08T17:09:00",
-        "modifiedAt": "2026-10-08T17:09:00"
-    },
-    {
-        "scheduleId": 4,
-        "title": "제목",
-        "content": "내용",
-        "author": "작성자",
-        "createdAt": "2026-10-07T17:09:00",
-        "modifiedAt": "2026-10-07T17:09:00"
-    }
-]
+{
+    "scheduleList": [
+        {
+            "scheduleId": 1,
+            "title": "제목",
+            "content": "내용",
+            "author": "작성자",
+            "createdAt": "2026-11-14T17:09:00",
+            "modifiedAt": "2026-11-14T17:09:00"
+        },
+        {
+            "scheduleId": 2,
+            "title": "제목",
+            "content": "내용",
+            "author": "작성자",
+            "createdAt": "2026-09-14T17:09:00",
+            "modifiedAt": "2026-09-14T17:09:00"
+        },
+        {
+            "scheduleId": 3,
+            "title": "제목",
+            "content": "내용",
+            "author": "작성자",
+            "createdAt": "2026-10-08T17:09:00",
+            "modifiedAt": "2026-10-08T17:09:00"
+        },
+        {
+            "scheduleId": 4,
+            "title": "제목",
+            "content": "내용",
+            "author": "작성자",
+            "createdAt": "2026-10-07T17:09:00",
+            "modifiedAt": "2026-10-07T17:09:00"
+        }
+    ]
+}
 ```
 
 ### 선택 일정 조회
@@ -136,14 +131,14 @@ https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-ap
 
 **Response Body** `200 OK`
 
-|필드|타입|필수|유효성|
-|--|--|--|--|
-|`scheduleId`|Long|Y|일정 ID|
-|`title`|String|Y|일정 제목|
-|`content`|String|Y|일정 내용|
-|`author`|String|Y|작성자명|
-|`createdAt`|LocalDateTime|Y|작성일
-|`modifiedAt`|LocalDateTime|Y|수정일
+|필드|타입|설명|
+|--|--|--|
+|`scheduleId`|Long|일정 ID|
+|`title`|String|일정 제목|
+|`content`|String|일정 내용|
+|`author`|String|작성자명|
+|`createdAt`|LocalDateTime|작성일
+|`modifiedAt`|LocalDateTime|수정일
 
 ```json
 {
@@ -166,15 +161,15 @@ https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-ap
 
 |Key|Value|필수|설명|
 |--|--|--|--|
-|`Content-Type`|`application/json`|Y|요청 본문 형식|
+|`Content-Type`|`application/json`|✅|요청 본문 형식|
 
 **Request Body**
 
 |필드|타입|필수|설명|
 |--|--|--|--|
-|`title`|String|N| 일정 제목
-|`author`|String|N| 작성자명
-|`password`|String|Y| 비밀번호
+|`title`|String|❌| 일정 제목
+|`author`|String|❌| 작성자명
+|`password`|String|✅| 비밀번호
 
 ```json
 {
@@ -185,14 +180,14 @@ https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-ap
 ```
 **Response Body** `200 OK`
 
-|필드|타입|필수|유효성|
-|--|--|--|--|
-|`scheduleId`|Long|Y|일정 ID|
-|`title`|String|Y|일정 제목|
-|`content`|String|Y|일정 내용|
-|`author`|String|Y|작성자명|
-|`createdAt`|LocalDateTime|Y|작성일
-|`modifiedAt`|LocalDateTime|Y|수정일
+|필드|타입|설명|
+|--|--|--|
+|`scheduleId`|Long|일정 ID|
+|`title`|String|일정 제목|
+|`content`|String|일정 내용|
+|`author`|String|작성자명|
+|`createdAt`|LocalDateTime|작성일
+|`modifiedAt`|LocalDateTime|수정일
 
 ```json
 {
@@ -204,6 +199,7 @@ https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-ap
     "modifiedAt": "2026-10-16T14:30:00"
 }
 ```
+
 ### 일정 삭제
 
 |메서드|요청 URL|
@@ -214,13 +210,13 @@ https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-ap
 
 |Key|Value|필수|설명|
 |--|--|--|--|
-|`Content-Type`|`application/json`|Y|요청 본문 형식|
+|`Content-Type`|`application/json`|✅|요청 본문 형식|
 
 **Request Body**
 
 |필드|타입|필수|설명|
 |--|--|--|--|
-|`password`|String|Y| 비밀번호
+|`password`|String|✅| 비밀번호
 
 ```json
 {
@@ -229,3 +225,37 @@ https://documenter.getpostman.com/view/50157289/2sBYHRVh9Z?utm_source=postman-ap
 ```
 
 **Response** `204 No Content`
+
+# ERD
+```mermaid
+erDiagram
+    schedules {
+        BIGINT schedule_id PK
+        VARCHAR(30) title
+        VARCHAR(200) content
+        VARCHAR(50) author
+        VARCHAR(4) password
+        TIMESTAMP created_at
+        TIMESTAMP modified_at
+    }
+```
+
+# 테이블 명세서
+
+## 공통 컬럼: `BaseEntity`
+
+|칼럼 이름| 데이터타입|null 허용| key종류| 기본값| 설명|
+|--|--|--|--|--|--|
+|`created_at`|TIMESTAMP|❌|-|-|작성일 (최초 저장 시 자동 입력, 수정 불가)|
+|`modified_at`|TIMESTAMP|❌|-|-|수정일 (저장·수정 시 자동 갱신)|
+
+## 테이블명: `Schedule`
+|칼럼 이름| 데이터타입|null 허용| key종류| 기본값| 설명|
+|--|--|--|--|--|--|
+|`schedule_id`|BIGINT|❌|PK|AUTO_INCREMENT|일정 ID|
+|`title`|VARCHAR(30)|❌|-|-|일정 제목|
+|`content`|VARCHAR(200)|❌|-|-|일정 내용|
+|`author`|VARCHAR(50)|❌|-|-|작성자명|
+|`password`|VARCHAR(4)|❌|-|-|비밀번호|
+|`created_at`|TIMESTAMP|❌|-|-|작성일 (`BaseEntity` 상속)|
+|`modified_at`|TIMESTAMP|❌|-|-|수정일 (`BaseEntity` 상속)|
