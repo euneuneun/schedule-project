@@ -1,7 +1,7 @@
 package com.schedule_project.schedule.service;
 
 import com.schedule_project.schedule.dto.ScheduleCreateRequest;
-import com.schedule_project.schedule.dto.ScheduleCreateResponse;
+import com.schedule_project.schedule.dto.ScheduleResponse;
 import com.schedule_project.schedule.entity.Schedule;
 import com.schedule_project.schedule.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,10 +15,10 @@ public class ScheduleService {
     private final ScheduleRepository scheduleRepository;
 
     @Transactional
-    public ScheduleCreateResponse scheduleCreate(ScheduleCreateRequest request){
+    public ScheduleResponse scheduleCreate(ScheduleCreateRequest request){
         Schedule schedule = new Schedule(request.getTitle(),request.getContent(),request.getAuthor(), request.getPassword() );
         Schedule saveSchedule = scheduleRepository.save(schedule);
-        ScheduleCreateResponse response = new ScheduleCreateResponse(
+        ScheduleResponse response = new ScheduleResponse(
                 saveSchedule.getScheduleId(),
                 saveSchedule.getTitle(),
                 saveSchedule.getContent(),

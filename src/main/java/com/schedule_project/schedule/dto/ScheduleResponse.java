@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @Getter
-public class ScheduleCreateResponse {
+public class ScheduleResponse {
 
     private final Long schduledId;
     private final String title;
